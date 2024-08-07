@@ -5,14 +5,14 @@ from transformers import DetrImageProcessor, DetrForObjectDetection, CLIPProcess
 from PIL import Image
 import requests
 
-# Load models
+# Here are trying to Load a models
 detr_model = DetrForObjectDetection.from_pretrained('facebook/detr-resnet-50')
 clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 blip_processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
 blip_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 
-# Helper functions
+# It is Helping function
 def detect_objects(image):
     processor = DetrImageProcessor.from_pretrained('facebook/detr-resnet-50')
     inputs = processor(images=image, return_tensors="pt")
@@ -21,6 +21,7 @@ def detect_objects(image):
     results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=0.9)[0]
     return results
 
+# Here generating a caption of the image 
 def generate_caption(image):
     text = "a photography of"
     inputs = clip_processor(text=[text], images=image, return_tensors="pt", padding=True)
@@ -29,6 +30,8 @@ def generate_caption(image):
     probs = logits_per_image.softmax(dim=1)
     return text, probs
 
+# Here generating a blip caption which is effectively leverages noisy web data through a bootstrapping mechanism, 
+# where a captioner generates synthetic captions filtered by a noise removal process.  
 def generate_blip_caption(image):
     inputs = blip_processor(image, return_tensors="pt")
     outputs = blip_model.generate(**inputs)
