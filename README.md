@@ -1,4 +1,4 @@
-# mohd-kaif-ansari-wasserstoff-AiIntern_Task
+# Image Segmentation and Object Detection
 
 Image Segmentation and Object Analysis
 
