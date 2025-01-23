@@ -1,22 +1,20 @@
 # Image Segmentation and Object Detection
 
-Image Segmentation and Object Analysis
-
-1.) Overview
+## 📋 Description
 
 This project is an image segmentation and captioning pipeline built using Streamlit and various models from the Hugging Face library. The application allows users to upload an image, which is then processed to detect objects and generate captions. It uses the following models:
 - **DetrForObjectDetection**: For object detection.
 - **CLIPModel**: For generating captions using CLIP.
 - **BlipForConditionalGeneration**: For generating captions using BLIP.
 
-2.) Features
+## 🚀 Features
 
 - **Object Detection**: Identifies and labels objects in the uploaded image.
 - **Caption Generation**: Provides captions for the uploaded image using two different models (CLIP and BLIP).
 
-3.) Setup Instructions
+## Setup Instructions
 
-4.) Prerequisites
+## Prerequisites
 
 - Python 3.8 or higher
 - Pip (Python package installer)
